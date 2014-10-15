@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1413332659 source:e:\c++ projects\drowpocker\closed_card.cpp
+	"closed_card.h"
+
+1413332717 e:\c++ projects\drowpocker\closed_card.h
+	"card.h"
+
+1413332704 source:e:\c++ projects\drowpocker\main.cpp
+	<iostream>
+	"closed_card.h"
+
+1413332740 source:e:\c++ projects\drowpocker\card.cpp
+	"card.h"
+
+1413332679 e:\c++ projects\drowpocker\card.h
+
+1413330489 source:e:\c++ projects\drowpocker\open_card.cpp
+	"open_card.h"
+
+1413330489 e:\c++ projects\drowpocker\open_card.h
+	"closed_card.h"
+
