@@ -11,9 +11,81 @@ game::~game() {}
 
 game::game(int b,int am,std::string s[])
 {
+    //initing game
     sbalance=b;
     player_amount=am;
     names=s;
+}
+
+
+void game::run()
+{
+    //init diller
+    diller=0;
+    //creating players
+    init_players();
+    //start rounds unless only one player will haven't 0 balance
+    while(check())
+    {
+
+        init_money(true);
+        shake_cards();
+        //initing money and shaking cards
+        //first round
+        round(true);
+        // two rounds for first true for second false
+        after_card_give();
+        // give card to player player if he dropped it
+        std::cout<<std::endl<<"First Round is finished!"<<std::endl<<
+                 "Enter any key to begin Second Round"<<std::endl;
+        std::string s;
+        std::cin>>s;
+        system("cls");
+        int m=0;
+        for(int i=0; i<player_amount; i++)
+        {
+            if (!folded[i]&&gplayers[i].get_balance()!=0)
+                m++;
+        }
+        //case for losing whole money in first round
+        if (m>1)
+        {
+            //reinit money
+            //also two cases for first and second round
+            init_money(false);
+            //second round
+            round(false);
+        }
+        std::cout<<std::endl<<"Second Round is finished!"<<std::endl;
+        std::cout<<"Players' cards and rpeveous balances:"<<std::endl;
+        //information for players
+        for (int tmp=0; tmp<player_amount; tmp++)
+        {
+            card * player_cards=gplayers[tmp].get_cards(cards);
+            int size=gplayers[tmp].get_size(cards);
+            std::string s_cards="";
+            card k;
+            for ( int i=0; i<size ; i++ )
+            {
+                k=player_cards[i];
+                s_cards+=k.get_weight();
+                s_cards+=k.get_suit();
+                s_cards+=" ";
+            }
+            std::cout<<gplayers[tmp].get_name()<<"  "<<s_cards<<" "<<gplayers[tmp].get_balance()<<std::endl;
+        }
+        show_down();
+        std::cout<<"Players' balances after check:"<<std::endl;
+        for (int tmp=0; tmp<player_amount; tmp++)
+        {
+            std::cout<<gplayers[tmp].get_name()<<"  "<<gplayers[tmp].get_balance()<<std::endl;
+        }
+        std::cout<<"Enter any key to continue"<<std::endl;
+        std::cin>>s;
+        //next game begin if we don't have winner
+        system("cls");
+    }
+    std::cout<<std::endl<<"Game Over"<<std::endl;
 }
 
 bool game::check()
@@ -65,61 +137,6 @@ void game::after_card_give()
         }
 }
 
-void game::run()
-{
-    diller=0;
-    init_players();
-    while(check())
-    {
-        init_money(true);
-        shake_cards();
-        round(true);
-        after_card_give();
-        std::cout<<std::endl<<"First Round is finished!"<<std::endl<<
-                 "Enter any key to begin Second Round"<<std::endl;
-        std::string s;
-        std::cin>>s;
-        system("cls");
-        int m=0;
-        for(int i=0; i<player_amount; i++)
-        {
-            if (!folded[i]&&gplayers[i].get_balance()!=0)
-                m++;
-        }
-        if (m>1)
-        {
-            init_money(false);
-            round(false);
-        }
-        std::cout<<std::endl<<"Second Round is finished!"<<std::endl;
-        std::cout<<"Players' cards and rpeveous balances:"<<std::endl;
-        for (int tmp=0; tmp<player_amount; tmp++)
-        {
-            card * player_cards=gplayers[tmp].get_cards(cards);
-            int size=gplayers[tmp].get_size(cards);
-            std::string s_cards="";
-            card k;
-            for ( int i=0; i<size ; i++ )
-            {
-                k=player_cards[i];
-                s_cards+=k.get_weight();
-                s_cards+=k.get_suit();
-                s_cards+=" ";
-            }
-            std::cout<<gplayers[tmp].get_name()<<"  "<<s_cards<<" "<<gplayers[tmp].get_balance()<<std::endl;
-        }
-        show_down();
-        std::cout<<"Players' balances after check:"<<std::endl;
-        for (int tmp=0; tmp<player_amount; tmp++)
-        {
-            std::cout<<gplayers[tmp].get_name()<<"  "<<gplayers[tmp].get_balance()<<std::endl;
-        }
-        std::cout<<"Enter any key to continue"<<std::endl;
-        std::cin>>s;
-        system("cls");
-    }
-    std::cout<<std::endl<<"Game Over"<<std::endl;
-}
 double mass[32];
 void game::show_down()
 {
@@ -141,8 +158,8 @@ void game::show_down()
         result[i]+=triple(card_on_ceck);
         result[i]+=strit(card_on_ceck);
         result[i]+=flesh(card_on_ceck);
-        /*result[i]+=full_house(card_on_ceck);
-         result[i]+=kare(card_on_ceck);*/
+        result[i]+=full_house(card_on_ceck);
+        result[i]+=kare(card_on_ceck);
         result[i]+=strit_flesh(card_on_ceck);
     }
     double maxx=-1;

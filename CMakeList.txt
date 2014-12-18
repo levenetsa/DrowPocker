@@ -4,12 +4,12 @@ project(DrowPoker)
 set(SOURCE_FILES card.h
                  card.cpp
                  game.cpp
-                 card.h
-                 card.cpp
+                 game.h
                  player.h
                  player.cpp
-		 game.h
-                 open_card.h
+				 human_player.h
+                 human_player.cpp
+				 open_card.h
                  open_card.cpp
                  closed_card.h
                  closed_card.cpp

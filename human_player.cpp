@@ -23,15 +23,22 @@ human_player::human_player(int b, std::string n){
 
     card * human_player::get_cards(card * h)
     {
-        std::vector<card> l_cards;
+        //std::vector<card> l_cards;
         std::string player_name=get_name();
+        int p=0;
+        for (int i=0; i<52; i++)
+            if (player_name==h[i].get_owner())
+                p++;
+        int it=0;
+        card l_cards[p];
         for (int i=0; i<52; i++)
             if (player_name==h[i].get_owner())
             {
-                l_cards.push_back(h[i]);
+                l_cards[it]=h[i];
+                it++;
             }
-        card* m_cards=new card[l_cards.size()];
-        for (unsigned int i=0; i<l_cards.size(); i++)
+        card* m_cards=new card[p];
+        for (int i=0; i<p; i++)
             m_cards[i]=l_cards[i];
         return m_cards;
     }

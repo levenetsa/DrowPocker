@@ -14,18 +14,14 @@ public:
     card(int);
     card();
     ~card();
-    friend game;
-    friend human_player;
-    friend vector.tcc;
-    //friend card(std::string,card const& h);
-
 protected:
     card operator=(card const& h);
+    friend game;
+    friend human_player;
     std::string get_owner() const;
     std::string get_weight();
     std::string get_suit();
     std::string owner;
-private:
 };
 
 

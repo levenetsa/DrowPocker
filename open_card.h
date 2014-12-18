@@ -10,7 +10,8 @@ class closed_card;
 class open_card: public card
 {
 public:
-     open_card(std::string,card const& h);
+    open_card(std::string,card const& h);
+    //constructors
     open_card(int);
     open_card();
     open_card(const open_card&);

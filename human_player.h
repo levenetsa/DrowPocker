@@ -3,26 +3,23 @@
 
 #include "game.h"
 #include <string>
+#include "player.h"
 
 class game;
 
-class human_player
+class human_player:player
 {
 public:
     human_player();
     human_player(int, std::string);
+    //init player money:name
     ~human_player();
+protected:
     std::string get_name();
     int get_balance();
     card* get_cards(card * h);
     int get_size(card * h);
     friend game;
-protected:
-    std::string name;
-    int balance;
-private:
-
-
 };
 
 
