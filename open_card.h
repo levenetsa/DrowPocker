@@ -1,12 +1,19 @@
 #ifndef OPEN_CARD_H
 #define OPEN_CARD_H
+
 #include "closed_card.h"
-class open_card
+#include <string>
+#include "card.h"
+
+class closed_card;
+
+class open_card: public card
 {
-    int suit;
-    int weight;
 public:
-    open_card(closed_card card);
+     open_card(std::string,card const& h);
+    open_card(int);
+    open_card();
+    open_card(const open_card&);
     ~open_card();
 protected:
 private:

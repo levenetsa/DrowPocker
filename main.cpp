@@ -1,13 +1,15 @@
 #include <iostream>
+#include "card.h"
 #include "closed_card.h"
-
+#include "game.h"
+#include <string>
 using namespace std;
 
 int main()
 {
-    card a[52];
-    for (int i=0;i<52 ;i++ )
-        a[i]= card(i);
-    cout << "End" << endl;
+    std::string names[]={"Sania","Alex","Vasia"};
+    game g=game(300,3,names);
+    g.run();
+    //game (int,int,std::string[]);
     return 0;
 }

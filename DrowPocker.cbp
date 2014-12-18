@@ -36,7 +36,13 @@
 		<Unit filename="card.h" />
 		<Unit filename="closed_card.cpp" />
 		<Unit filename="closed_card.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="game.h" />
+		<Unit filename="human_player.cpp" />
+		<Unit filename="human_player.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="open_card.cpp" />
+		<Unit filename="open_card.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
