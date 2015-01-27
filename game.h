@@ -16,7 +16,7 @@ class game
 public:
     game();
     //constructor for creating game
-    //where balance:player_amount:names
+    //where balance; player_amount; names
     game (int,int,std::string[]);
     //method for runnig game
     void run();

@@ -11,13 +11,15 @@ class human_player:player
 {
 public:
     human_player();
+    //constructor for players where
+    //balance; name
     human_player(int, std::string);
     //init player money:name
     ~human_player();
 protected:
     std::string get_name();
     int get_balance();
-    card* get_cards(card * h);
+    card * get_cards(card * h);
     int get_size(card * h);
     friend class game;
 };

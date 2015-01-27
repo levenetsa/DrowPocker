@@ -7,9 +7,8 @@ using namespace std;
 
 int main()
 {
-    std::string names[]={"Sania","Alex","Vasia"};
-    game g=game(300,3,names);
+    std::string names[] = {"Sania", "Alex", "Vasia"};
+    game g = game(300, 3, names);
     g.run();
-    //game (int,int,std::string[]);
     return 0;
 }

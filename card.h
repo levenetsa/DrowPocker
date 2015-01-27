@@ -9,8 +9,12 @@ class game;
 class card
 {
 public:
+    //suit
     int suit;
+    //weight
     int weight;
+    //card constructor from int where int / 13 = suit
+    //and int % 13 = weight
     card(int);
     card();
     ~card();

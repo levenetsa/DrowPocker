@@ -6,7 +6,9 @@
 class player
 {
 public:
+    //name
     std::string name;
+    //balance
     int balance;
     player();
     ~player();

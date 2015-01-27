@@ -2,6 +2,8 @@ TEMPLATE = app
 CONFIG += console
 CONFIG -= qt
 
+QMAKE_CXXFLAGS_DEBUG +=-Wall -pedantic
+
 SOURCES += main.cpp \
     player.cpp \
     open_card.cpp \
